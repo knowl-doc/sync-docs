@@ -1,9 +1,10 @@
 #!/bin/sh
 echo "Knowl script running to review linked documents..."
 
+ls
+
 BIN_PATH="$HOME"
 WORKING_DIR="$BIN_PATH/knowl_temp"
-echo $PATH
 export PATH=$PATH:$WORKING_DIR
 
 
