@@ -1,5 +1,5 @@
 #!/bin/sh
-echo "Knowl pre-commit hook Loading"
+echo "Knowl script running to review linked documents..."
 
 BIN_PATH="$HOME"
 WORKING_DIR="$BIN_PATH/knowl_temp"
@@ -21,7 +21,7 @@ verify_tmp() {
 create_working_dir(){
 if [ ! -d "$WORKING_DIR" ]
   then
-      echo "File doesn't exist. Creating now"
+      echo "Knowl templ directory doesn't exist. Creating now"
       mkdir -p -- "$WORKING_DIR"
       echo "File created- /bin/knowl_temp"
   else
@@ -38,7 +38,6 @@ download_cli() {
 
 cleanup() {
     echo "Cleaning up..."
-#    rm -f $WORKING_DIR/knowl_cli
 }
 
 verify_wget
@@ -50,5 +49,4 @@ if [ ! -x "$WORKING_DIR/knowl-cli" ]
     echo "Knowl cli is already installed"
 fi
 cleanup
-#read -n1 -p "Do you want to CONTINUE pushing? [Y/n]" doit < /dev/tty
 knowl-cli
