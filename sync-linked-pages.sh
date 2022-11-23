@@ -1,13 +1,11 @@
 #!/bin/sh
 echo "Knowl script running to review linked documents..."
-echo $EMAIL
-echo $PASSWORD
-echo $PWD
-
-ls
 
 BIN_PATH="$HOME"
 WORKING_DIR="$BIN_PATH/knowl_temp"
+
+export KNOWL_USERNAME = $EMAIL 
+export KNOWL_PASSWORD = $PASSWORD 
 export PATH=$PATH:$WORKING_DIR
 
 
