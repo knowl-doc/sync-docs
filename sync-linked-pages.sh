@@ -1,6 +1,7 @@
 #!/bin/sh
 echo "Knowl script running to review linked documents..."
-echo $EMAIl
+echo $EMAIL
+echo $PASSWORD
 echo $PWD
 
 ls
