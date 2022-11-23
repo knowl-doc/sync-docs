@@ -3,6 +3,7 @@ echo "Knowl script running to review linked documents..."
 
 BIN_PATH="$HOME"
 WORKING_DIR="$BIN_PATH/knowl_temp"
+echo $PATH
 export PATH=$PATH:$WORKING_DIR
 
 
