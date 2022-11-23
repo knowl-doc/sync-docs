@@ -1,5 +1,6 @@
 #!/bin/sh
 echo "Knowl script running to review linked documents..."
+echo $PWD
 
 ls
 
