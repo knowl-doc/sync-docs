@@ -5,8 +5,6 @@ BIN_PATH="$HOME"
 WORKING_DIR="$BIN_PATH/knowl_temp"
 
 export PATH=$PATH:$WORKING_DIR
-echo "::warning file=app.js,line=1,col=5,endColumn=7::Missing semicolon"
-
 
 
 verify_wget() {
