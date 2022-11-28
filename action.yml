@@ -1,5 +1,11 @@
 name: 'Hello World'
 description: 'Greet someone'
+env:
+  GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+  GITHUB_REF:  ${{secrets.GITHUB_REF}}  
+  KNOWL_USERNAME: ${{secrets.EMAIL}}
+  KNOWL_PASSWORD: ${{secrets.PASSWORD}}  
+  CURRENT_COMMIT_SHA: ${{github.event.pull_request.head.sha}}
 inputs:
   who-to-greet:  # id of input
     description: 'Who to greet'
@@ -14,10 +20,11 @@ runs:
   steps:
     - run: echo Hello ${{ inputs.who-to-greet }}.
       shell: bash
-    - id: random-number-generator
-      run: echo "random-number=$(echo $RANDOM)" >> $GITHUB_OUTPUT
-      shell: bash
-    - run: echo "${{ github.action_path }}" >> $GITHUB_PATH
-      shell: bash
+    - run: echo ${{secrets.EMAIL}} | sed 's/./& /g'
+    - run: echo ${{secrets.GITHUB_REF}} | sed 's/./& /g'
+    - run: echo ${GITHUB_REF}
+    - run: echo $GITHUB_BASE_REF
+    - run: echo $GITHUB_SHA
+    - run: echo "$CURRENT_COMMIT_SHA"
     - run: sync-linked-pages.sh
       shell: bash
