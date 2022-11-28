@@ -1,7 +1,7 @@
 name: 'Hello World'
 description: 'Greet someone'
 env:
-  GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+  GITHUB_TOKEN: ${{github.token }}
   GITHUB_REF:  ${{secrets.GITHUB_REF}}  
   KNOWL_USERNAME: ${{secrets.EMAIL}}
   KNOWL_PASSWORD: ${{secrets.PASSWORD}}  
