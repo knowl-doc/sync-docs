@@ -50,4 +50,4 @@ if [ ! -x "$WORKING_DIR/knowl-cli" ]
     echo "Knowl cli is already installed"
 fi
 cleanup
-knowl-cli
+knowl-cli knowl-cli-pr-request
