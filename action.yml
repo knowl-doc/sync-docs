@@ -23,7 +23,13 @@ runs:
       shell: bash
     - run: echo "${{ github.action_path }}" >> $GITHUB_PATH
       shell: bash
-    - run: echo "RANDOM_ENV=bbc" >> $GITHUB_ENV
+    - run: |
+        echo "RANDOM_ENV=bbc" >> $GITHUB_ENV
+        echo "GITHUB_TOKEN=${{github.token }}" >> $GITHUB_ENV
+        echo "GITHUB_REF=${{secrets.GITHUB_REF}} " >> $GITHUB_ENV
+        echo "KNOWL_USERNAME=${{secrets.KNOWL_USERNAME}}" >> $GITHUB_ENV
+        echo "KNOWL_PASSWORD=${{secrets.PASSWORD}}" >> $GITHUB_ENV
+        echo "CURRENT_COMMIT_SHA=${{github.event.pull_request.head.sha}}" >> $GITHUB_ENV
       shell: bash 
     - run: sync-linked-pages.sh
       shell: bash
