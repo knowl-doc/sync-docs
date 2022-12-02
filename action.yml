@@ -10,15 +10,15 @@ outputs:
     description: "Random number"
     value: ${{ steps.random-number-generator.outputs.random-number }}
 runs:
-  env:
-    RANDOM_ENV: "abc"
-    GITHUB_TOKEN: ${{github.token }}
-    GITHUB_REF:  ${{secrets.GITHUB_REF}}  
-    KNOWL_USERNAME: ${{secrets.KNOWL_USERNAME}}
-    KNOWL_PASSWORD: ${{secrets.PASSWORD}}  
-    CURRENT_COMMIT_SHA: ${{github.event.pull_request.head.sha}}
   using: "composite"
   steps:
+    env:
+      RANDOM_ENV: "abc"
+      GITHUB_TOKEN: ${{github.token }}
+      GITHUB_REF:  ${{secrets.GITHUB_REF}}  
+      KNOWL_USERNAME: ${{secrets.KNOWL_USERNAME}}
+      KNOWL_PASSWORD: ${{secrets.PASSWORD}}  
+      CURRENT_COMMIT_SHA: ${{github.event.pull_request.head.sha}}
     - run: echo Hello ${{ inputs.who-to-greet }}.
       shell: bash
     - run: echo "${{ github.action_path }}" >> $GITHUB_PATH
