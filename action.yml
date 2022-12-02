@@ -16,13 +16,6 @@ runs:
       shell: bash
     - run: echo "${{ github.action_path }}" >> $GITHUB_PATH
       shell: bash
-    - run: echo Hello ${{ inputs.who-to-greet }}.
-      shell: bash
-      env:
-        GITHUB_TOKEN: ${{github.token}}
-        GITHUB_REF: ${{github.ref}}
-        CURRENT_COMMIT_SHA: ${{github.event.pull_request.head.sha}}
-        RANDOM_ENV: bbc
 #     - run: |
 #         echo "RANDOM_ENV=bbc" >> $GITHUB_ENV
 #         echo "GITHUB_TOKEN=${{github.token }}" >> $GITHUB_ENV
@@ -31,3 +24,8 @@ runs:
 #       shell: bash 
     - run: sync-linked-pages.sh
       shell: bash
+      env:
+        GITHUB_TOKEN: ${{github.token}}
+        GITHUB_REF: ${{github.ref}}
+        CURRENT_COMMIT_SHA: ${{github.event.pull_request.head.sha}}
+        RANDOM_ENV: bbc
