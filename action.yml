@@ -11,19 +11,19 @@ outputs:
     value: ${{ steps.random-number-generator.outputs.random-number }}
 runs:
   using: "composite"
-  env:
-    RANDOM_ENV: "abc"
-    GITHUB_TOKEN: ${{github.token }}
-    GITHUB_REF:  ${{secrets.GITHUB_REF}}  
-    KNOWL_USERNAME: ${{secrets.KNOWL_USERNAME}}
-    KNOWL_PASSWORD: ${{secrets.PASSWORD}}  
-    CURRENT_COMMIT_SHA: ${{github.event.pull_request.head.sha}}
+#   env:
+#     RANDOM_ENV: "abc"
+#     GITHUB_TOKEN: ${{github.token }}
+#     GITHUB_REF:  ${{secrets.GITHUB_REF}}  
+#     KNOWL_USERNAME: ${{secrets.KNOWL_USERNAME}}
+#     KNOWL_PASSWORD: ${{secrets.PASSWORD}}  
+#     CURRENT_COMMIT_SHA: ${{github.event.pull_request.head.sha}}
   steps:
     - run: echo Hello ${{ inputs.who-to-greet }}.
       shell: bash
     - run: echo "${{ github.action_path }}" >> $GITHUB_PATH
       shell: bash
-    - run: echo $RANDOM_ENV
+    - run: echo $RANDOM_ENV >> $GITHUB_ENV
       shell: bash 
     - run: sync-linked-pages.sh
       shell: bash
