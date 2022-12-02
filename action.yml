@@ -12,6 +12,7 @@ runs:
       with:
         fetch-depth: 0
     - run: echo $username
+      shell: bash
     - run: echo Hello ${{ inputs.who-to-greet }}.
       shell: bash
     - run: echo "${{ github.action_path }}" >> $GITHUB_PATH
