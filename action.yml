@@ -1,7 +1,7 @@
 name: 'Sync Docs'
 description: 'Sync Docs'
 inputs:
-  KNOWL_USERNAME:  username
+  username:
     description: 'Knowl username'
     required: true
 runs:
@@ -11,6 +11,7 @@ runs:
       uses: actions/checkout@v2
       with:
         fetch-depth: 0
+    - run: echo $username
     - run: echo Hello ${{ inputs.who-to-greet }}.
       shell: bash
     - run: echo "${{ github.action_path }}" >> $GITHUB_PATH
