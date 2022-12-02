@@ -4,6 +4,9 @@ inputs:
   username:
     description: 'Knowl username'
     required: true
+  password:
+    description: 'Knowl username'
+    required: true
 runs:
   using: "composite"
   steps:
