@@ -20,8 +20,6 @@ runs:
         echo "RANDOM_ENV=bbc" >> $GITHUB_ENV
         echo "GITHUB_TOKEN=${{github.token }}" >> $GITHUB_ENV
         echo "GITHUB_REF=${{github.ref}} " >> $GITHUB_ENV
-#        echo "KNOWL_USERNAME=${{secrets.KNOWL_USERNAME}}" >> $GITHUB_ENV
-#        echo "KNOWL_PASSWORD=${{secrets.PASSWORD}}" >> $GITHUB_ENV
         echo "CURRENT_COMMIT_SHA=${{github.event.pull_request.head.sha}}" >> $GITHUB_ENV
       shell: bash 
     - run: sync-linked-pages.sh
