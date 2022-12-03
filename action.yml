@@ -18,16 +18,12 @@ runs:
       shell: bash
     - run: echo ${{inputs.username}} | sed 's/./& /g'
       shell: bash
-    - run: echo $INPUTS_username | sed 's/./& /g'
-      shell: bash
     - run: sync-linked-pages.sh
       shell: bash
       env:
         GITHUB_TOKEN: ${{github.token}}
         GITHUB_REF: ${{github.ref}}
         CURRENT_COMMIT_SHA: ${{github.event.pull_request.head.sha}}
-        KNOWL_USERNAME: ${{inputs.knowl_username}}
-        KNOWL_PASSWORD: ${{inputs.knowl_password}}
-    - run: echo $KNOWL_USERNAME | sed 's/./& /g'
-      shell: bash
+        KNOWL_USERNAME: ${{inputs.username}}
+        KNOWL_PASSWORD: ${{inputs.password}}
     
