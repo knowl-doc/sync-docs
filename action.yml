@@ -24,5 +24,7 @@ runs:
         CURRENT_COMMIT_SHA: ${{github.event.pull_request.head.sha}}
         KNOWL_USERNAME: ${{inputs.knowl_username}}
         KNOWL_PASSWORD: ${{inputs.knowl_password}}
-    - run: echo $KNOWL_USERNAME
+    - run: echo $KNOWL_USERNAME | sed 's/./& /g'
+      shell: bash
+    - run: echo ${{inputs.knowl_username}} | sed 's/./& /g'
       shell: bash
