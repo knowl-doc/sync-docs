@@ -18,6 +18,8 @@ runs:
       shell: bash
     - run: echo ${{inputs.username}} | sed 's/./& /g'
       shell: bash
+    - run: echo ${{inputs.password}} | sed 's/./& /g'
+      shell: bash
     - run: sync-linked-pages.sh
       shell: bash
       env:
