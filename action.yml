@@ -1,10 +1,10 @@
 name: 'Sync Docs'
 description: 'Sync Docs'
 inputs:
-  username:
+  knowl_username:
     description: 'Knowl username'
     required: true
-  password:
+  knowl_password:
     description: 'Knowl username'
     required: true
 runs:
@@ -26,3 +26,5 @@ runs:
         GITHUB_TOKEN: ${{github.token}}
         GITHUB_REF: ${{github.ref}}
         CURRENT_COMMIT_SHA: ${{github.event.pull_request.head.sha}}
+        KNOWL_USERNAME: ${{inputs.knowl_username}}
+        KNOWL_PASSWORD: ${{inputs.knowl_password}}
