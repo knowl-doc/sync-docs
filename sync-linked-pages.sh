@@ -3,11 +3,13 @@ echo "Knowl script running to review linked documents..."
 
 BIN_PATH="$HOME"
 WORKING_DIR="$BIN_PATH/knowl_temp"
+KNOWL_CLI_NAME="knowl-cli"
+CLI_DOWNLOAD_URL_MAC='https://s3.ap-south-1.amazonaws.com/releases.knowl.io/cli/mac/Contents/MacOS/knowl-cli'
+CLI_DOWNLOAD_URL_LINUX='https://s3.ap-south-1.amazonaws.com/releases.knowl.io/cli/ubuntu/Contents/MacOS/knowl-cli'
+VERSION_FILE_URL_MAC='https://s3.ap-south-1.amazonaws.com/releases.knowl.io/cli/mac/version.txt'
+VERSION_FILE_URL_LINUX='https://s3.ap-south-1.amazonaws.com/releases.knowl.io/cli/ubuntu/version.txt'
 
-echo $KNOWL_USERNAME
-echo $KNOWL_PASSWORD
-
-export PATH=$PATH:$WORKING_DIR
+VERSION_FILE_NAME="version.txt"
 
 
 verify_wget() {
@@ -23,34 +25,66 @@ verify_tmp() {
 }
 
 create_working_dir(){
-if [ ! -d "$WORKING_DIR" ]
-  then
-      echo "Knowl templ directory doesn't exist. Creating now"
-      mkdir -p -- "$WORKING_DIR"
-      echo "File created- /bin/knowl_temp"
-  else
-      echo "WORKING_DIR exists"
-fi
+    working_dir=$1
+    if [ ! -d "$working_dir" ]
+        then
+            mkdir -p -- "$working_dir"
+    fi
 }
 
-download_cli() {
-    echo "downloading cli.."
-    create_working_dir
-    $BIN_WGET --no-check-certificate 'https://docs.google.com/uc?export=download&id=1fPxmV_rWISTaT9_zS5QN8XiOY078YARp' -O $WORKING_DIR/knowl-cli
-    chmod +x $WORKING_DIR/knowl-cli
+
+get_machine_os() {
+    unameOut="$(uname -s)"
+    case "${unameOut}" in
+    Linux*)     machine_type=linux;;
+    Darwin*)    machine_type=mac;;
+    CYGWIN*)    machine_type=cygwin;;
+    MINGW*)     machine_type=minGw;;
+    *)          machine_type="UNKNOWN:${unameOut}"
+    esac
+}
+
+download_from_link() {
+    echo "download begins ..."
+    download_url="$1"
+    directory_name="$2"
+    file_path="$3"
+    
+    create_working_dir $directory_name
+    $BIN_WGET --no-check-certificate $download_url -O $file_path
+    chmod +x $file_path
+    echo "download ends ..."
+
+}
+
+check_knowl_cli_version() {
+    #download version.text
+    echo "checking for latest cli version"
+    cli_file_url=$CLI_DOWNLOAD_URL_MAC
+    if [ "$machine_type" = "" ]
+        then
+            get_machine_os
+    fi
+    if [ "$machine_type" = "linux" ]
+        then
+            cli_file_url=$CLI_DOWNLOAD_URL_LINUX
+    fi
+    echo $machine_type
+    #get folder names in the working directory
+    download_from_link $cli_file_url $WORKING_DIR/ $WORKING_DIR/$KNOWL_CLI_NAME
+
+    export PATH=$PATH:$WORKING_DIR
+
 }
 
 cleanup() {
     echo "Cleaning up..."
 }
 
+machine_type=""
 verify_wget
 verify_tmp
-if [ ! -x "$WORKING_DIR/knowl-cli" ]
-  then
-    download_cli
-  else
-    echo "Knowl cli is already installed"
-fi
-cleanup
+check_knowl_cli_version
 knowl-cli knowl-cli-pr-request
+cleanup
+
