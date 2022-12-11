@@ -1,11 +1,8 @@
 name: 'Sync Docs'
 description: 'Sync Docs'
 inputs:
-  username:
-    description: 'Knowl username'
-    required: true
-  password:
-    description: 'Knowl password'
+  knowl_api_key:
+    description: 'Knowl API Key'
     required: true
 runs:
   using: "composite"
@@ -22,6 +19,4 @@ runs:
         GITHUB_TOKEN: ${{github.token}}
         GITHUB_REF: ${{github.ref}}
         CURRENT_COMMIT_SHA: ${{github.event.pull_request.head.sha}}
-        KNOWL_USERNAME: ${{inputs.username}}
-        KNOWL_PASSWORD: ${{inputs.password}}
-    
+        KNOWL_API_KEY: ${{inputs.knowl_api_key}}    
