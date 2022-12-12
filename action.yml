@@ -15,11 +15,12 @@ runs:
         fetch-depth: 0
     - run: sync-linked-pages.sh
            base_branch={origin/}${{github.base_ref}}
-           echo $base_branch
       shell: bash
       env:
         GITHUB_TOKEN: ${{github.token}}
         GITHUB_REF: ${{github.ref}}
         GITHUB_BASE_BRANCH: ${base_branch}
         CURRENT_COMMIT_SHA: ${{github.event.pull_request.head.sha}}
-        KNOWL_API_KEY: ${{inputs.knowl_api_key}}    
+        KNOWL_API_KEY: ${{inputs.knowl_api_key}}
+    - run: echo $base_branch
+      shell: bash
