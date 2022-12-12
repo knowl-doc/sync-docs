@@ -22,5 +22,8 @@ runs:
         GITHUB_BASE_BRANCH: ${base_branch}
         CURRENT_COMMIT_SHA: ${{github.event.pull_request.head.sha}}
         KNOWL_API_KEY: ${{inputs.knowl_api_key}}
-    - run: echo $base_branch
+    - run: |
+          echo "::group::Base Branch"
+          echo $base_branch
+          echo "::endgroup::"
       shell: bash
