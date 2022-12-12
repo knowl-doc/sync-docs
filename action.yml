@@ -13,6 +13,8 @@ runs:
       uses: actions/checkout@v2
       with:
         fetch-depth: 0
+    - run: git diff main
+      shell: bash
     - run: sync-linked-pages.sh
       shell: bash
       env:
