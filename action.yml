@@ -13,10 +13,12 @@ runs:
       uses: actions/checkout@v2
       with:
         fetch-depth: 0
-    #- run: sync-linked-pages.sh
     - run: |
            base_branch=origin/${{github.base_ref}}
            echo ${base_branch}
+      shell: bash
+    #- run: sync-linked-pages.sh
+    - run: echo ${base_branch}
       shell: bash
       env:
         GITHUB_TOKEN: ${{github.token}}
