@@ -20,6 +20,6 @@ runs:
       env:
         GITHUB_TOKEN: ${{github.token}}
         GITHUB_REF: ${{github.ref}}
-        GITHUB_BASE_BRANCH: ${origin/${github.base_ref}}
+        GITHUB_BASE_BRANCH: ${'origin/'${github.base_ref}}
         CURRENT_COMMIT_SHA: ${{github.event.pull_request.head.sha}}
         KNOWL_API_KEY: ${{inputs.knowl_api_key}}
