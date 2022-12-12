@@ -13,13 +13,13 @@ runs:
       uses: actions/checkout@v2
       with:
         fetch-depth: 0
-    - run: sync-linked-pages.sh
+    - run: echo ${base_branch} #sync-linked-pages.sh
            base_branch=origin/${{github.base_ref}}
            echo ${base_branch}
       shell: bash
       env:
         GITHUB_TOKEN: ${{github.token}}
         GITHUB_REF: ${{github.ref}}
-        GITHUB_BASE_BRANCH: ${base_branch}
+        GITHUB_BASE_BRANCH: ${origin/${github.base_ref}}
         CURRENT_COMMIT_SHA: ${{github.event.pull_request.head.sha}}
         KNOWL_API_KEY: ${{inputs.knowl_api_key}}
