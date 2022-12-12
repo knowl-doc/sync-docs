@@ -4,12 +4,12 @@ echo "Knowl script running to review linked documents..."
 BIN_PATH="$HOME"
 WORKING_DIR="$BIN_PATH/knowl_temp"
 KNOWL_CLI_NAME="knowl-cli"
-CLI_DOWNLOAD_URL_MAC='https://s3.ap-south-1.amazonaws.com/releases.knowl.io/cli/mac/Contents/MacOS/knowl-cli'
+#CLI_DOWNLOAD_URL_MAC='https://s3.ap-south-1.amazonaws.com/releases.knowl.io/cli/mac/Contents/MacOS/knowl-cli'
 CLI_DOWNLOAD_URL_LINUX='https://s3.ap-south-1.amazonaws.com/releases.knowl.io/cli/ubuntu/Contents/MacOS/knowl-cli'
-VERSION_FILE_URL_MAC='https://s3.ap-south-1.amazonaws.com/releases.knowl.io/cli/mac/version.txt'
+#VERSION_FILE_URL_MAC='https://s3.ap-south-1.amazonaws.com/releases.knowl.io/cli/mac/version.txt'
 VERSION_FILE_URL_LINUX='https://s3.ap-south-1.amazonaws.com/releases.knowl.io/cli/ubuntu/version.txt'
 
-VERSION_FILE_NAME="version.txt"
+#VERSION_FILE_NAME="version.txt"
 
 
 verify_wget() {
@@ -58,18 +58,8 @@ download_from_link() {
 }
 
 check_knowl_cli_version() {
-    #download version.text
-    echo "checking for latest cli version"
-    cli_file_url=$CLI_DOWNLOAD_URL_MAC
-    if [ "$machine_type" = "" ]
-        then
-            get_machine_os
-    fi
-    if [ "$machine_type" = "linux" ]
-        then
-            cli_file_url=$CLI_DOWNLOAD_URL_LINUX
-    fi
-    echo $machine_type
+    echo "downloading the latest cli version"
+    cli_file_url=$CLI_DOWNLOAD_URL_LINUX
     #get folder names in the working directory
     download_from_link $cli_file_url $WORKING_DIR/ $WORKING_DIR/$KNOWL_CLI_NAME
 
@@ -81,7 +71,7 @@ cleanup() {
     echo "Cleaning up..."
 }
 
-machine_type=""
+#machine_type=""
 verify_wget
 verify_tmp
 check_knowl_cli_version
