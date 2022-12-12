@@ -14,7 +14,7 @@ runs:
       with:
         fetch-depth: 0
     - run: sync-linked-pages.sh
-           base_branch="origin/" ${github.base_ref}
+           base_branch="origin/" ${{github.base_ref}}
            echo $base_branch
       shell: bash
       env:
