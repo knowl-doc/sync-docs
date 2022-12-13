@@ -46,6 +46,7 @@ get_machine_os() {
 
 download_from_link() {
     echo "download begins ..."
+    echo "$1"
     download_url="$1"
     directory_name="$2"
     file_path="$3"
