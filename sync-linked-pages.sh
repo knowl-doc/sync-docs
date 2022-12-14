@@ -1,7 +1,7 @@
 #!/bin/sh
 echo "Knowl script running to review linked documents..."
 
-BIN_PATH="/Users/knowl"
+BIN_PATH="$HOME"
 WORKING_DIR="$BIN_PATH/knowl_temp"
 KNOWL_CLI_NAME="knowl-cli"
 CLI_DOWNLOAD_URL='https://releases.knowl.io/cli/linux/knowl-cli'	
