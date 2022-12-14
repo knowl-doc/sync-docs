@@ -4,7 +4,7 @@ echo "Knowl script running to review linked documents..."
 BIN_PATH="/Users/knowl"
 WORKING_DIR="$BIN_PATH/knowl_temp"
 KNOWL_CLI_NAME="knowl-cli"
-CLI_DOWNLOAD_URL_LINUX='https://releases.knowl.io/cli/linux/knowl-cli'	
+CLI_DOWNLOAD_URL='https://releases.knowl.io/cli/linux/knowl-cli'	
 
 
 
@@ -29,17 +29,6 @@ create_working_dir(){
 }
 
 
-get_machine_os() {
-    unameOut="$(uname -s)"
-    case "${unameOut}" in
-    Linux*)     machine_type=linux;;
-    Darwin*)    machine_type=mac;;
-    CYGWIN*)    machine_type=cygwin;;
-    MINGW*)     machine_type=minGw;;
-    *)          machine_type="UNKNOWN:${unameOut}"
-    esac
-}
-
 download_from_link() {
     echo "download begins ..."
     echo "$1"
@@ -56,7 +45,7 @@ download_from_link() {
 
 check_knowl_cli_version() {
     echo "downloading the latest cli version"
-    cli_file_url=$CLI_DOWNLOAD_URL_LINUX
+    cli_file_url=$CLI_DOWNLOAD_URL
     #get folder names in the working directory
     download_from_link $cli_file_url $WORKING_DIR/ $WORKING_DIR/$KNOWL_CLI_NAME
 
