@@ -1,15 +1,11 @@
 #!/bin/sh
 echo "Knowl script running to review linked documents..."
 
-BIN_PATH="$HOME"
+BIN_PATH="/Users/knowl"
 WORKING_DIR="$BIN_PATH/knowl_temp"
 KNOWL_CLI_NAME="knowl-cli"
-#CLI_DOWNLOAD_URL_MAC='https://releases.knowl.io/cli/mac/Contents/MacOS/knowl-cli'	
 CLI_DOWNLOAD_URL_LINUX='https://releases.knowl.io/cli/linux/knowl-cli'	
-#VERSION_FILE_URL_MAC='https://releases.knowl.io/cli/mac/version.txt'	
-VERSION_FILE_URL_LINUX='https://releases.knowl.io/cli/linux/version.txt'
 
-#VERSION_FILE_NAME="version.txt"
 
 
 verify_wget() {
