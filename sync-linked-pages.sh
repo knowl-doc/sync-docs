@@ -63,6 +63,7 @@ verify_tmp
 check_knowl_cli_version
 echo $WORKING_DIR/$KNOWL_CLI_NAME
 chmod +x $WORKING_DIR/$KNOWL_CLI_NAME
+file $WORKING_DIR/$KNOWL_CLI_NAME
 knowl-cli knowl-cli-pr-request
 cleanup
 
