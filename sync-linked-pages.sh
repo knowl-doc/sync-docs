@@ -4,7 +4,10 @@ echo "Knowl script running to review linked documents..."
 BIN_PATH="$HOME"
 WORKING_DIR="$BIN_PATH/knowl_temp"
 KNOWL_CLI_NAME="knowl-cli"
-CLI_DOWNLOAD_URL='https://releases.knowl.io/cli/linux/knowl-cli'	
+CLI_DOWNLOAD_URL='https://releases.knowl.io/cli/linux/knowl-cli'
+PRE_COMMIT_TYPE=$1 #0 - for blocker, 1 for non-blocker
+TEMP_DATA_FILE="$WORKING_DIR/tmp_data.txt"
+
 
 
 
@@ -61,6 +64,14 @@ cleanup() {
 verify_wget
 verify_tmp
 check_knowl_cli_version
-knowl-cli knowl-cli-pr-request
+knowl-cli knowl-cli-pr-request $TEMP_DATA_FILE
+is_pass=$(head -n 1 $TEMP_DATA_FILE)
+rm $TEMP_DATA_FILE
+echo $is_pass 
+if [ $is_pass -eq 0 ]
+    then 
+        echo "error: block pull request"
+        exit 1
+fi
 cleanup
 

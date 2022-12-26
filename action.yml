@@ -4,6 +4,9 @@ inputs:
   knowl_api_key:
     description: 'Knowl API Key'
     required: true
+  action_type:
+    description: 'Blocker or Non Blocker Action'
+    required: true
 runs:
   using: "composite"
   steps:
@@ -21,3 +24,4 @@ runs:
         GITHUB_BASE_BRANCH: "origin/${{github.base_ref}}"
         CURRENT_COMMIT_SHA: ${{github.event.pull_request.head.sha}}
         KNOWL_API_KEY: ${{inputs.knowl_api_key}}
+        ACTION_TYPE: ${{inputs.action_type}}
