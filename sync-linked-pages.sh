@@ -75,7 +75,7 @@ echo $is_pass
 cleanup
 if [ $is_pass -eq 0 ]
     then 
-        echo "error: block pull request"
+        echo "::error ,Documents are not updated"
         exit 1
 fi
 
