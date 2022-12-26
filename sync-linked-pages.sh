@@ -72,10 +72,10 @@ echo $TEMP_DATA_FILE
 knowl-cli cli $EVENT_PR_REQUEST $TEMP_DATA_FILE
 is_pass=$(head -n 1 $TEMP_DATA_FILE)
 echo $is_pass 
+cleanup
 if [ $is_pass -eq 0 ]
     then 
         echo "error: block pull request"
         exit 1
 fi
-cleanup
 
