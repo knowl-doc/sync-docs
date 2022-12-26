@@ -58,6 +58,7 @@ check_knowl_cli_version() {
 }
 
 cleanup() {
+    rm $TEMP_DATA_FILE
     echo "Cleaning up..."
 }
 
@@ -66,9 +67,9 @@ verify_wget
 verify_tmp
 check_knowl_cli_version
 echo $EVENT_PR_REQUEST
-knowl-cli cli $EVENT_PR_REQUEST $TEMP_DATA_FILE
+echo $$TEMP_DATA_FILE
+./knowl-cli cli $EVENT_PR_REQUEST $TEMP_DATA_FILE
 is_pass=$(head -n 1 $TEMP_DATA_FILE)
-rm $TEMP_DATA_FILE
 echo $is_pass 
 if [ $is_pass -eq 0 ]
     then 
