@@ -7,7 +7,7 @@ KNOWL_CLI_NAME="knowl-cli"
 CLI_DOWNLOAD_URL='https://releases.knowl.io/cli/linux/knowl-cli'
 PRE_COMMIT_TYPE=$1 #0 - for blocker, 1 for non-blocker
 TEMP_DATA_FILE="$WORKING_DIR/tmp_data.txt"
-EVENT_PR_REQUEST = 'pr_request'
+EVENT_PR_REQUEST="pr_request"
 
 
 
