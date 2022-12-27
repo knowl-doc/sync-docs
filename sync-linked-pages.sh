@@ -66,16 +66,12 @@ cleanup() {
 verify_wget
 verify_tmp
 check_knowl_cli_version
-echo "what's happing here"
-echo $EVENT_PR_REQUEST
-echo $TEMP_DATA_FILE
 knowl-cli cli $EVENT_PR_REQUEST $TEMP_DATA_FILE
 is_pass=$(head -n 1 $TEMP_DATA_FILE)
-echo $is_pass 
 cleanup
 if [ $is_pass -eq 0 ]
     then 
-        echo "::error ,Documents are not updated"
+        echo "::error- Documents are not updated"
         exit 1
 fi
 
