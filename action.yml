@@ -10,14 +10,13 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - run: echo "${{ github.action_path }}" >> $GITHUB_PATH
+    - run: echo "${{ github.event.number }}" >> $GITHUB_PATH
       shell: bash
     - run: sync-linked-pages.sh
       shell: bash
       env:
         GITHUB_TOKEN: ${{github.token}}
-        GITHUB_REF: ${{github.ref}}
+        GITHUB_PULL_NUMBER: ${{github.event.number}}
         GITHUB_BASE_BRANCH: "origin/${{github.base_ref}}"
-        CURRENT_COMMIT_SHA: ${{github.event.pull_request.head.sha}}
         KNOWL_API_KEY: ${{inputs.knowl_api_key}}
         ACTION_TYPE: ${{inputs.action_type}}
